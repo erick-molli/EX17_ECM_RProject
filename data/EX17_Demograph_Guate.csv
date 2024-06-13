@@ -1,0 +1,113 @@
+ hhid ,treatment,age_screening,stove_num,main_stove,trash,tobacco,ga_screen_days,ga_screen_weeks,heating,light,primary_cook,family_size,mom_education,mom_occupation
+33016,R,20.5,2,Open fire,Compost,No,125,17.86,Open fire,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33026,Q,27.6,2,Open fire,Compost,No,114,16.29,Not heating,Electricity,Pregnant mom,6,Primary complete,Household work
+33027,R,30.3,2,Open fire,Compost,No,96,13.71,Open fire,Electricity,Pregnant mom,7,Primary incomplete,Household work
+33029,R,27.8,2,Open fire,Burn it,No,90,12.86,Open fire,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33038,R,27.5,2,Open fire,Compost,No,77,11.00,Not heating,Electricity,Pregnant mom,7,Primary incomplete,Household work
+33042,R,22,2,Open fire,Burn it,No,135,19.29,Not heating,Electricity,Pregnant mom,2,Primary complete,Household work
+33058,R,23.7,2,Open fire,Feed animals,No,129,18.43,Not heating,Electricity,Pregnant mom,5,Primary incomplete,Commercial
+33067,Q,19,2,Open fire,Compost,No,110,15.71,Not heating,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33081,Q,34.2,1,Open fire,Government collected,Yes,92,13.14,Not heating,Electricity,Pregnant mom,5,None,Household work
+33089,Q,31.4,1,Chimney,Bury it,No,131,18.71,Not heating,Electricity,Pregnant mom,5,Secondary incomplete,Household work
+33103,Q,20.4,2,Open fire,Compost,No,115,16.43,Not heating,Candles,Pregnant mom,4,Primary incomplete,Household work
+33111,Q,21.4,2,Open fire,Burn it,No,113,16.14,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33129,R,28.5,1,Chimney,Burn it,No,115,16.43,Open fire,Electricity,Pregnant mom,4,Primary complete,Household work
+33141,R,26.8,2,Open fire,Burn it,No,69,9.86,Not heating,Electricity,Pregnant mom,6,Primary incomplete,Household work
+33147,Q,25.6,2,Open fire,Burn it,No,129,18.43,Not heating,Electricity,Pregnant mom,3,Secondary complete,Household work
+33152,Q,24.3,1,Chimney,Compost,Yes,89,12.71,Open fire,Electricity,Pregnant mom,2,Secondary complete,Household work
+33167,Q,18,2,Open fire,Compost,No,146,20.86,Not heating,Solar light,Pregnant mom,3,Primary incomplete,Household work
+33169,R,18,2,Open fire,Bury it,No,71,10.14,Not heating,Electricity,Pregnant mom,5,Secondary incomplete,Household work
+33176,R,32.1,1,Open fire,Compost,No,138,19.71,Open fire,Electricity,Pregnant mom,5,Primary complete,Household work
+33180,R,24.1,1,Open fire,Throw it away,No,96,13.71,Not heating,Candil,Pregnant mom,4,None,Household work
+33191,Q,25.6,1,Open fire,Throw it away,No,97,13.86,Open fire,Electricity,Pregnant mom,6,Primary complete,Household work
+33195,R,26.5,2,Open fire,Burn it,No,135,19.29,Open fire,Electricity,Pregnant mom,5,None,Household work
+33199,Q,22.9,2,Open fire,Bury it,No,133,19.00,Open fire,Electricity,Mother/Mother-in-law,10,Primary incomplete,Household work
+33209,Q,22,2,Open fire,Burn it,No,90,12.86,Open fire,Electricity,Pregnant mom,3,Secondary incomplete,Homemaid
+33226,R,29,1,Chimney,Throw it away,No,85,12.14,Not heating,Electricity,Pregnant mom,3,Vocational,Household work
+33227,R,21.8,2,Open fire,Compost,No,75,10.71,Not heating,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33228,R,21.2,2,Open fire,Feed animals,No,84,12.00,Not heating,Electricity,Mother/Mother-in-law,3,Primary incomplete,Household work
+33235,R,28,2,Open fire,Throw it away,No,72,10.29,Open fire,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33242,R,27.9,1,Chimney,Throw it away,No,112,16.00,Open fire,Electricity,Pregnant mom,4,Primary complete,Household work
+33244,Q,31,2,Open fire,Burn it,No,86,12.29,Open fire,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33246,R,27.1,1,Chimney,Bury it,No,86,12.29,Not heating,Electricity,Pregnant mom,4,Primary complete,Household work
+33247,R,23.6,2,Open fire,Throw it away,No,80,11.43,Not heating,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33248,Q,23,1,Open fire,Throw it away,No,66,9.43,Not heating,Electricity,Pregnant mom,5,Primary incomplete,Household work
+33252,R,19.9,2,Open fire,Throw it away,No,65,9.29,Not heating,Electricity,Pregnant mom,5,Primary incomplete,Household work
+33260,R,28.4,3,Open fire,Throw it away,No,103,14.71,Not heating,Electricity,Pregnant mom,3,Primary complete,Household work
+33263,R,22,1,Chimney,Throw it away,No,92,13.14,Open fire,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33269,Q,20.1,2,Chimney,Feed animals,No,126,18.00,Not heating,Electricity,Pregnant mom,8,Secondary complete,Household work
+33277,R,18.4,1,Chimney,Burn it,No,75,10.71,Open fire,Torch (battery),Pregnant mom,2,Secondary incomplete,Household work
+33286,R,22,2,Open fire,Bury it,No,88,12.57,Open fire,Candles,Pregnant mom,5,Primary incomplete,Household work
+33287,Q,34.2,2,Chimney,Throw it away,No,95,13.57,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33288,Q,20.5,1,Open fire,Compost,No,122,17.43,Open fire,Electricity,Pregnant mom,4,Primary complete,Household work
+33294,R,28.7,1,Open fire,Compost,No,75,10.71,Not heating,Electricity,Pregnant mom,3,Secondary incomplete,Household work
+33296,R,21.7,1,Open fire,Burn it,No,96,13.71,Not heating,Electricity,Mother/Mother-in-law,8,Secondary complete,Household work
+33298,Q,23.6,2,Open fire,Compost,No,91,13.00,Open fire,Electricity,Pregnant mom,2,Vocational,Household work
+33301,Q,24.8,2,Open fire,Throw it away,No,80,11.43,Not heating,Electricity,Pregnant mom,2,Secondary incomplete,Household work
+33303,Q,27,1,Open fire,Throw it away,No,105,15.00,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33308,R,22.5,1,Open fire,Throw it away,No,74,10.57,Not heating,Electricity,Pregnant mom,3,Secondary incomplete,Household work
+33309,R,23.9,2,Open fire,Bury it,No,75,10.71,Open fire,Electricity,Pregnant mom,2,Secondary complete,Household work
+33311,Q,32.2,1,Chimney,Compost,No,87,12.43,Not heating,Electricity,Pregnant mom,5,Primary complete,Household work
+33325,R,34,2,Open fire,Throw it away,No,79,11.29,Not heating,Electricity,Pregnant mom,5,Primary incomplete,Household work
+33326,Q,33.5,2,Open fire,Bury it,No,108,15.43,Open fire,Solar panel,Pregnant mom,8,Primary incomplete,Household work
+33330,R,33.1,2,Chimney,Throw it away,No,120,17.14,Not heating,Electricity,Pregnant mom,5,Primary incomplete,Household work
+33334,R,23.6,2,Open fire,Compost,No,111,15.86,Not heating,Electricity,Pregnant mom,2,Secondary incomplete,Household work
+33336,Q,24.7,1,Chimney,Compost,No,81,11.57,Not heating,Electricity,Mother/Mother-in-law,3,Some college or university,Education
+33337,Q,20.9,1,Open fire,Throw it away,No,89,12.71,Not heating,Electricity,Pregnant mom,2,Primary complete,Household work
+33353,R,24.2,2,Open fire,Throw it away,No,94,13.43,Not heating,Electricity,Pregnant mom,4,None,Household work
+33358,R,27.5,1,Open fire,Throw it away,Yes,96,13.71,Not heating,Electricity,Pregnant mom,4,Primary complete,Household work
+33363,R,28.8,1,Chimney,Throw it away,No,71,10.14,Not heating,Electricity,Pregnant mom,3,Vocational,Household work
+33367,R,18.9,2,Open fire,Other,No,90,12.86,Open fire,Candles,Pregnant mom,7,Secondary incomplete,Household work
+33370,Q,29.7,1,Open fire,Throw it away,No,76,10.86,Not heating,Electricity,Pregnant mom,4,Secondary incomplete,Agriculture
+33383,Q,22.4,1,Open fire,Throw it away,No,81,11.57,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33387,R,21.5,2,Open fire,Compost,No,81,11.57,Not heating,Electricity,Pregnant mom,2,Primary incomplete,Household work
+33396,R,18.8,2,Open fire,Throw it away,No,84,12.00,Manufactured cookstove,Electricity,Pregnant mom,2,Primary complete,Household work
+33397,Q,30.3,2,Open fire,Burn it,No,114,16.29,Not heating,Electricity,Mother/Mother-in-law,7,Primary complete,Industry
+33420,R,24.4,1,Chimney,Burn it,No,109,15.57,Not heating,Electricity,Pregnant mom,5,Primary complete,Household work
+33432,Q,20.3,2,Open fire,Throw it away,No,91,13.00,Not heating,Electricity,Mother/Mother-in-law,8,Secondary complete,Household work
+33437,R,34.8,2,Open fire,Compost,No,122,17.43,Not heating,Electricity,Pregnant mom,8,Primary incomplete,Household work
+33444,Q,25,2,Open fire,Compost,Yes,106,15.14,Open fire,Electricity,Pregnant mom,4,Primary complete,Household work
+33447,Q,18.7,2,Open fire,Bury it,No,108,15.43,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33452,Q,18,1,Open fire,Burn it,No,84,12.00,Not heating,Electricity,Mother/Mother-in-law,8,Primary incomplete,Household work
+33457,R,33.4,2,Open fire,Bury it,No,103,14.71,Not heating,Electricity,Pregnant mom,5,Primary complete,Household work
+33459,Q,28,3,Open fire,Burn it,No,92,13.14,Not heating,Electricity,Pregnant mom,6,Primary incomplete,Household work
+33470,R,19.6,2,Open fire,Burn it,No,116,16.57,Not heating,Candil,Pregnant mom,2,Primary incomplete,Household work
+33475,Q,28.5,1,Open fire,Compost,Yes,88,12.57,Not heating,Electricity,Pregnant mom,4,Primary complete,Household work
+33484,R,22.2,2,Open fire,Burn it,No,83,11.86,Not heating,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33489,R,21.8,1,Open fire,Throw it away,No,111,15.86,Not heating,Candles,Pregnant mom,4,Primary incomplete,Homemaid
+33493,Q,21.3,2,Open fire,Throw it away,No,90,12.86,Not heating,Electricity,Pregnant mom,3,Primary incomplete,Household work
+33495,R,31.9,1,Chimney,Bury it,No,71,10.14,Not heating,Electricity,Pregnant mom,3,Vocational,Commercial
+33497,Q,24.5,1,Chimney,Throw it away,No,86,12.29,Open fire,Electricity,Pregnant mom,6,Secondary incomplete,Household work
+33505,Q,31.3,1,Open fire,Throw it away,No,107,15.29,Not heating,Candles,Pregnant mom,5,Primary incomplete,Household work
+33517,Q,27,1,Open fire,Throw it away,No,84,12.00,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33519,R,30.2,2,Chimney,Burn it,Yes,63,9.00,Not heating,Electricity,Mother/Mother-in-law,7,None,Household work
+33521,R,18.3,2,Open fire,Compost,No,112,16.00,Not heating,Electricity,Pregnant mom,3,Secondary complete,Household work
+33524,R,22.5,1,Open fire,Compost,No,91,13.00,Not heating,None,Pregnant mom,3,Primary incomplete,Household work
+33529,Q,24.9,1,Chimney,Burn it,No,89,12.71,Not heating,Electricity,Pregnant mom,4,Primary complete,Household work
+33537,R,23,2,Open fire,Compost,No,109,15.57,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33543,Q,31.3,1,Chimney,Throw it away,No,87,12.43,Not heating,Electricity,Pregnant mom,5,None,Household work
+33547,Q,23.7,1,Chimney,Throw it away,No,86,12.29,Not heating,Candles,Pregnant mom,6,Secondary incomplete,Household work
+33549,Q,20.6,2,Open fire,Throw it away,No,93,13.29,Not heating,Electricity,Pregnant mom,3,Primary complete,Household work
+33559,R,25.5,2,Open fire,Compost,Yes,106,15.14,Not heating,Electricity,Pregnant mom,4,Primary incomplete,Household work
+33562,R,31.1,2,Open fire,Burn it,No,127,18.14,Not heating,Electricity,Pregnant mom,9,Primary complete,Household work
+33568,Q,27.2,2,Open fire,Other,No,110,15.71,Open fire,Candles,Pregnant mom,5,Primary incomplete,Household work
+33570,Q,21.9,2,Open fire,Throw it away,No,82,11.71,Not heating,Electricity,Pregnant mom,2,Primary incomplete,Household work
+33573,R,19.6,2,Chimney,Throw it away,No,112,16.00,Not heating,Electricity,Sister/Sister-in-law,12,Primary incomplete,Household work
+33587,Q,28.1,2,Open fire,Throw it away,No,86,12.29,Not heating,Candles,Pregnant mom,6,None,Household work
+35014,R,18.9,2,Open fire,Burn it,No,121,17.29,Open fire,Electricity,Mother/Mother-in-law,7,Secondary complete,Household work
+35025,R,23.7,2,Open fire,Throw it away,No,138,19.71,Not heating,Electricity,Pregnant mom,11,Primary complete,Household work
+35032,R,18.2,3,Open fire,Throw it away,No,94,13.43,Not heating,Electricity,Mother/Mother-in-law,6,Primary complete,Household work
+35038,Q,21.3,2,Open fire,Throw it away,No,91,13.00,Open fire,Electricity,Pregnant mom,4,Primary incomplete,Household work
+35041,Q,20.4,3,Chimney,Feed animals,No,104,14.86,Not heating,Electricity,Mother/Mother-in-law,7,Secondary complete,Education
+35047,R,21.9,2,Chimney,Throw it away,No,109,15.57,Not heating,Electricity,Pregnant mom,4,Primary complete,Household work
+35053,R,19.7,1,Open fire,Compost,No,65,9.29,Not heating,Traditional stove,Mother/Mother-in-law,6,Secondary incomplete,Household work
+35077,Q,21.6,2,Open fire,Compost,No,100,14.29,Not heating,Electricity,Pregnant mom,12,Primary complete,Household work
+35090,R,32.7,4,Chimney,Bury it,No,90,12.86,Not heating,Electricity,Pregnant mom,11,Secondary complete,Household work
+35092,Q,18.1,2,Open fire,Throw it away,No,85,12.14,Not heating,Electricity,Pregnant mom,6,Primary complete,Agriculture
+35100,R,28.1,2,Open fire,Feed animals,No,85,12.14,Open fire,Electricity,Mother/Mother-in-law,8,Primary complete,Household work
+35101,Q,19.7,1,Open fire,Throw it away,No,99,14.14,Open fire,Electricity,Pregnant mom,6,Primary incomplete,Household work
+35104,R,18.3,2,Open fire,Throw it away,No,84,12.00,Not heating,Electricity,Pregnant mom,10,Primary incomplete,Household work
+35121,Q,20.9,2,Open fire,Throw it away,No,69,9.86,Open fire,Electricity,Pregnant mom,6,Primary complete,Household work
+35124,R,19.9,2,Open fire,Throw it away,No,132,18.86,Open fire,Electricity,Mother/Mother-in-law,5,Primary complete,Household work
+35127,R,26,2,Open fire,Throw it away,No,66,9.43,Not heating,Electricity,Mother/Mother-in-law,3,Primary complete,Household work
+35128,R,26.5,2,Open fire,Bury it,No,86,12.29,Not heating,Electricity,Pregnant mom,9,Primary incomplete,Household work

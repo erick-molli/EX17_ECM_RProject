@@ -1,0 +1,621 @@
+##### EX-17: ECM COMPARISONS IN HAPIN GUATEMALA, DATA ANALYSIS CODE #####
+
+#Packages to use
+library(tidyverse)
+library(readr)
+library(readxl)
+library(here)
+library(freqtables)
+library(na.tools)
+library(ggpubr)
+library(RVAideMemoire)
+library(ggthemes)
+library(irr)
+library(Metrics)
+
+##### DEMOGRAPHIC CHARACTERISTICS #####
+#Load datasets
+demographics <- read_csv(here("data", "EX17_Demograph_Guate.csv"))
+visits <- read_csv(here("data", "Guate_Alldupvisits_nullremoved.csv"))
+
+#Determine HHs with X number of visits. This line of code is used to compute Table S3, manually.
+length(which(table(visits$hhid)== 2)) #Replace the number from 1 to 6
+
+#Frequency tables by visit (timepoint). This line of code is used to compute Table S2, manually.
+visits %>% freq_table(timepoint)
+
+####Data transformations####
+#Categorize ages from 18+, 24+ and 30+
+demographics$age_cat <- cut(demographics$age_screening,
+                            breaks = c(17, 24, 30, 35),
+                            labels = c("18 to 23", "24 to 30", "30 to 35"))
+
+#Categorize gestational weeks from 9+, 13+ and 17+
+demographics$ga_cat <-  cut(demographics$ga_screen_weeks,
+                            breaks= c(8, 13, 17, 21),
+                            labels= c("9 to 12", "13 to 16", "17 to 20"))
+
+#Categorize family size from 2-4, 5-7 and 8-11
+demographics$family_cat <-  cut(demographics$family_size,
+                                breaks= c(1, 4, 7, 12),
+                                labels= c("2 to 4", "5 to 7", "8 to 12"))
+
+#See changes in the 'demographics' data frame
+glimpse(demographics)
+
+####Descriptive statistics####
+#The following codes are used to manually edit Table S1.
+
+#Participant's Age
+demographics %>% freq_table(age_cat)
+
+#Participant's Age by Study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(age_cat)
+
+#Mean and SD of Participant's Age
+mean(demographics$age_screening)
+sd(demographics$age_screening)
+
+#Mean of Participant's Age by Study arm
+demographics %>% 
+  select(age_screening, treatment) %>% 
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  summarise(mean= mean(age_screening))
+
+#SD of Participant's Age by Study arm
+demographics %>% 
+  select(age_screening, treatment) %>% 
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  summarise(SD= sd(age_screening))
+
+#Participant's Gestational age
+demographics %>% freq_table(ga_cat)
+
+#Participant's Gestational age by Study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(ga_cat)
+
+#Mean and SD of Participant's Gestational age
+mean(demographics$ga_screen_weeks)
+sd(demographics$ga_screen_weeks)
+
+#Mean of Participant's Gestational age by Study arm
+demographics %>% 
+  select(ga_screen_weeks, treatment) %>% 
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  summarise(mean= mean(ga_screen_weeks))
+
+#SD of Participant's Gestational age by Study arm
+demographics %>% 
+  select(ga_screen_weeks, treatment) %>% 
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm 
+  summarise(SD= sd(ga_screen_weeks))
+
+#Number of biomass stoves (Overall)
+demographics %>% freq_table(stove_num)
+
+#Number of biomass stoves by study arm
+demographics %>%
+  filter(treatment== "R") %>%  #Replace R by Q, to check in each study arm
+  freq_table(stove_num)
+
+#Main stove type (Overall)
+demographics %>% freq_table(main_stove)
+
+#Main stove type by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(main_stove)
+
+#Trash disposal (Overall)
+demographics %>% freq_table(trash)
+
+#Trash disposal by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(trash)
+
+#Lighting source (Overall)
+demographics %>% freq_table(light)
+
+#Lighting source by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(light)
+
+#Tobacco smoking (Overall)
+demographics %>% freq_table(tobacco)
+
+#Tobacco smoking by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(tobacco)
+
+#Mother education (Overall)
+demographics %>% freq_table(mom_education)
+
+#Mother education by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(mom_education)
+
+#Mother occupation (Overall)
+demographics %>% freq_table(mom_occupation)
+
+#Mother occupation by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(mom_occupation)
+
+#Family size (Overall)
+demographics %>% freq_table(family_cat)
+
+#Family size by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(family_cat)
+
+#Mean and SD of Family size
+mean(demographics$family_size)
+sd(demographics$family_size)
+
+#Mean of family size by study arm
+demographics %>% 
+  select(family_size, treatment) %>% 
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  summarise(mean= mean(family_size))
+
+#SD of family size by study arm
+demographics %>% 
+  select(family_size, treatment) %>% 
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  summarise(SD= sd(family_size))
+
+#Family size by category (Overall)
+demographics %>% freq_table(family_cat)
+
+#Family size by category by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(family_cat)
+
+#Primary cook at home (Overall)
+demographics %>% freq_table(primary_cook)
+
+#Primary cook at home by study arm
+demographics %>%
+  filter(treatment== "R") %>% #Replace R by Q, to check in each study arm
+  freq_table(primary_cook)
+
+
+##### PM2.5 CONCENTRATIONS #####
+#Load dataset
+concentrations_temp <- read_csv(here("data", "Allconcentrations_Guate.csv"))
+
+####Data transformations####
+#Create new column in dataset classifying by Arm
+concentrations_temp <- mutate(concentrations_temp, Arm= case_when(
+  startsWith(concatenated, "R") ~ "Control",
+  startsWith(concatenated, "Q") ~ "Intervention"))
+
+#Save as new file
+write_csv(concentrations_temp, here("data", "EX17_allconc_Guate.csv"))
+
+####Statistical summaries of concentrations####
+#New data file, all concentrations
+concentrations <- read.csv("data/EX17_allconc_Guate.csv", na.rm(T))
+
+#Summary of concentrations by type of ECM (Grav vs Neph), Study Arm and Visit. This output is used to manually create Tables S3 and S4
+#Compute the min, max, mean, median and 1st and 3rd quartiles (IQR) of the concentrations
+concentrations %>% 
+  filter(ecm_type== "Nephelometric") %>% #Filter by type of ecm= 'Gravimetric' or 'Nephelometric'
+  filter(concatenated== "QP2B1") %>% #Filter by visit and study arm, using the concatenated variable= 'QBL', 'RBL', 'QBLP1', 'RBLP1, etc.
+  summary(all_conc)
+
+#Compute the SDs of the concentrations
+concentrations %>% 
+  filter(ecm_type== "Nephelometric") %>% #Filter by type of ecm= 'Gravimetric' or 'Nephelometric'
+  filter(concatenated== "QP2B1") %>% #Filter by visit and study arm, using the concatenated variable= 'QBL', 'RBL', 'QBLP1', 'RBLP1, etc.
+  summarise(SD= sd(all_conc))
+
+#Boxplots of concentrations by visit and type of ecm (Gravimetric or Nephelometric)
+concentrations %>% 
+  ggplot(aes(x= visit, 
+             y= all_conc, 
+             fill= Arm))+ #select the x and y axis and differentiate fueltype by color
+  geom_boxplot(varwidth = T)+ #type of plot (In this case boxplot)
+  scale_fill_manual(values = c("sienna2", "steelblue2"))+ #Change filling colors
+  facet_wrap(~ecm_type)+ #Differentiate Gravimetric and Nephelometric in the same graph
+  theme_bw(base_size = 17)+ #Change plot theme, indicate the size of the bars
+  geom_hline(yintercept =35, #The line should intercept at the 35 y-axis
+             colour="black", #color of line
+             linetype="dashed")+ #dashed line
+  geom_signif(y_position = 2.88, #To show the stat. significance bar, this to place the y-position
+              xmin = 0.6, #the minimum x position
+              xmax = 1.4, #the maximum x position
+              annotations = "NS", #to show only the non-significant parameters (in this case BL)
+              tip_length = 0.01)+ #the tip length of the significance bar
+  scale_y_log10()+ #Log scaling the y-axis for a better visualization
+  xlab("Visit")+ #x-axis label
+  ylab(expression(PM[2.5]~concentration~(ug/m^3))) #y-axis label, using underscripts and superscripts by the "expression" function
+
+
+##### ECM COMPARISONS #####
+#Load datasets
+ecmdups <- read_excel(here("data", "EX17_ECMComparisons.xlsx"))
+
+####Data manipulation####
+#Concatenate visit and treatment to classify comparisons according to fuel type
+ecmdups$concatenated <- paste(ecmdups$treatment, ecmdups$visit)
+
+#Create new column named "Group" categorizing visits by study arm, which reflects use of fuel.
+ecmdups <- mutate(ecmdups, Group = case_when(
+  endsWith(concatenated, "BL") ~ "Control",
+  endsWith(concatenated, "R P1") ~ "Control",
+  endsWith(concatenated, "R P2") ~ "Control",
+  endsWith(concatenated, "Q P1") ~ "Intervention",
+  endsWith(concatenated, "Q P2") ~ "Intervention",
+  endsWith(concatenated, "R BLP1") ~ "Control",
+  endsWith(concatenated, "R P1P2") ~ "Control",
+  endsWith(concatenated, "R P2B1") ~ "Control",
+  endsWith(concatenated, "Q BLP1") ~ "Intervention",
+  endsWith(concatenated, "Q P1P2") ~ "Intervention",
+  endsWith(concatenated, "Q P2B1") ~ "Intervention"))
+
+#Create data set with only Baseline observations
+#This is for the pre-randomization analysis (if necessary)
+ecmbl <- ecmdups %>% filter(visit == "BL")
+
+#Create data set with Control and Intervention post-randomization observations.
+#This is for the post-randomization correlation analysis.
+ecmpost <- ecmdups %>% filter(visit != "BL")
+
+####Spearman Correlations####
+#Create gravimetric and nephelometric dataframes
+ecmgravs <- filter(ecmdups, Sample_type== "Gravimetric")
+ecmnephs <- filter(ecmdups, Sample_type== "Nephelometric")
+
+#Check N's for these dfs (For Figure 2)
+length(rownames(ecmgravs)) #Grav
+length(rownames(ecmnephs)) #Neph
+
+#Create dataframes by study arm
+ecmgravs_control <- filter(ecmgravs, Group== "Control") #Gravimetric-Control
+ecmgravs_intervention <- filter(ecmgravs, Group== "Intervention") #Gravimetric-Intervention
+ecmnephs_control <- filter(ecmnephs, Group== "Control") #Nephelometric-Control
+ecmnephs_intervention <- filter(ecmnephs, Group== "Intervention") #Nephelometric-Intervention
+
+#Check N's for these dfs (For Figure 2)
+length(rownames(ecmgravs_control)) #Grav-Cont
+length(rownames(ecmgravs_intervention)) #Grav-Int
+length(rownames(ecmnephs_control)) #Neph-Cont
+length(rownames(ecmnephs_intervention)) #Neph-Int
+
+#Compute Spearman correlations (Overall correlations for Grav and Neph observations)
+#To manually include in Table 1
+spearman.ci(ecmgravs$ecm1_conc, ecmgravs$ecm2_conc, nrep = 1000, conf.level = 0.95) #Gravimetric
+spearman.ci(ecmnephs$ecm1_conc, ecmnephs$ecm2_conc, nrep = 1000, conf.level = 0.95) #Nephelometric
+
+#Compute Spearman correlations by study arm
+#To manually include in Table 1
+spearman.ci(ecmgravs_control$ecm1_conc, ecmgravs_control$ecm2_conc, nrep = 1000, conf.level = 0.95) #Gravimetric-Control
+spearman.ci(ecmgravs_intervention$ecm1_conc, ecmgravs_intervention$ecm2_conc, nrep = 1000, conf.level = 0.95) #Gravimetric-Intervention
+spearman.ci(ecmnephs_control$ecm1_conc, ecmnephs_control$ecm2_conc, nrep = 1000, conf.level = 0.95) #Nephelometric-Gravimetric
+spearman.ci(ecmnephs_intervention$ecm1_conc, ecmnephs_intervention$ecm2_conc, nrep = 1000, conf.level = 0.95) #Nephelometric-Intervention
+
+#Spearman correlation plots####
+#Plot of correlations between duplicate gravimetric ECMs and duplicate nephelometric ECMs
+#Figure 4
+ecmdups %>%
+  ggplot(aes(x= ecm1_conc,
+             y= ecm2_conc))+ #Select x and y axis
+  geom_point(shape=21, fill= "steelblue", color="black", size=2)+ #Select shape of points, filling color, color of border and size of shape
+  geom_smooth(method = lm, colour= "navyblue", se= T)+ #Add the lm line
+  facet_wrap(~Sample_type)+ #To differentiate Gravimetric and Nephelometric in the same graph
+  xlab(expression(ECM1~PM[2.5]~concentration~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(ECM2~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  theme_clean(base_size = 21)+ #Select theme of graph
+  theme(aspect.ratio = 1)+ #Aspect ratio of graph "square"
+  geom_abline(intercept = 0, slope = 1, linewidth= 0.5)+ #Insert a 45deg line
+  stat_cor(method = "spearman", #Add the spearman correlation value on the graph
+           alternative = "two.sided", #two-sided test
+           cor.coef.name = "rho", #for Spearman symbol
+           label.x.npc = "left", #x position
+           label.y.npc = "top", #y position
+           p.accuracy = 0.001, #accuracy of the p-value
+           size= 5) #size of text
+
+#Color palette for next plot
+palette <- c("steelblue", "orangered2")
+
+#Plot of correlations between duplicate gravimetric ECMs and duplicate nephelometric ECMs, by study arm
+#Figure 5
+ecmdups %>%
+  ggplot(aes(x= ecm1_conc,
+             y= ecm2_conc, color= Group))+ #Select x and y axis
+  geom_point(shape=16, size=2)+ #Select shape of points, filling color, color of border and size of shape
+  color_palette(palette)+
+  geom_smooth(aes(group = Group),method = lm,se= T)+ #Add the lm line
+  facet_wrap(~Sample_type)+ #To differentiate Gravimetric and Nephelometric in the same graph
+  xlab(expression(ECM1~PM[2.5]~concentration~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(ECM2~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  theme_clean(base_size = 20)+ #Select theme of graph
+  theme(aspect.ratio = 1)+ #Aspect ratio of graph "square"
+  geom_abline(intercept = 0, slope = 1, linewidth= 0.5)+ #Insert a 45deg line
+  scale_x_log10()+ #Log transform x scale for better visualization
+  scale_y_log10()+ #Log transform y scale for better visualization
+  stat_cor(method = "spearman", #Add the spearman correlation value on the graph
+           alternative = "two.sided", #two-sided test
+           cor.coef.name = "rho", #for Spearman symbol
+           label.x.npc = "left", #x position
+           label.y.npc = "top", #y position
+           p.accuracy = 0.001, #accuracy of the p-value
+           size= 5) #size of text
+
+#Plot of correlations between duplicate gravimetric ECMs and duplicate nephelometric ECMs, by study arm (Post Randomization comparisons only)
+#Figure 6
+ecmpost %>%
+  ggplot(aes(x= ecm1_conc,
+             y= ecm2_conc, color= Group))+ #Select x and y axis
+  geom_point(shape=16, size=2)+ #Select shape of points, filling color, color of border and size of shape
+  color_palette(palette)+
+  geom_smooth(aes(group = Group),method = lm,se= T)+ #Add the lm line
+  facet_wrap(~Sample_type)+ #To differentiate Gravimetric and Nephelometric in the same graph
+  xlab(expression(ECM1~PM[2.5]~concentration~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(ECM2~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  theme_clean(base_size = 20)+ #Sele ct theme of graph
+  theme(aspect.ratio = 1)+ #Aspect ratio of graph "square"
+  geom_abline(intercept = 0, slope = 1, linewidth= 0.5)+ #Insert a 45deg line
+  scale_y_log10()+ #Modify y axis for better visualization
+  scale_x_log10()+ #Modify x axis for better visualization
+  stat_cor(method = "spearman", #Add the spearman correlation value on the graph
+           alternative = "two.sided", #two-sided test
+           cor.coef.name = "rho", #for Spearman symbol
+           label.x.npc = "left", #x position
+           label.y.npc = "top", #y position
+           p.accuracy = 0.001, #accuracy of the p-value
+           size= 5) #size of text
+
+####Bland-Altman Agreement####
+#Create new column for concentration averages between both ECMs
+ecmgravs$avg <- rowMeans(ecmgravs[,4:5]) #[,4:5] to select all rows and columns 4 and 5. Gravimetric dataset
+ecmnephs$avg <- rowMeans(ecmnephs[,4:5]) #Nephelometric dataset
+ecmdups$avg <- rowMeans(ecmdups[,4:5]) #Entire dataset
+
+#Create new column for difference in measurements
+ecmgravs$diff <- ecmgravs$ecm1_conc - ecmgravs$ecm2_conc #Gravimetric dataset
+ecmnephs$diff <- ecmnephs$ecm1_conc - ecmnephs$ecm2_conc #Nephelometric dataset
+ecmdups$diff <- ecmdups$ecm1_conc - ecmdups$ecm2_conc #Entire dataset
+
+#find average difference
+mean_diff_grav <- mean(ecmgravs$diff) #Gravimetric dataset
+mean_diff_neph <- mean(ecmnephs$diff) #Nephelometric dataset
+
+#find lower 95% confidence interval limits
+lower_grav <- mean_diff_grav - 1.96 * sd(ecmgravs$diff) #Gravimetric dataset
+lower_neph <- mean_diff_neph - 1.96 * sd(ecmnephs$diff) #Nephelometric dataset
+
+#find upper 95% confidence interval limits
+upper_grav <- mean_diff_grav + 1.96 * sd(ecmgravs$diff) #Gravimetric dataset
+upper_neph <- mean_diff_neph + 1.96 * sd(ecmnephs$diff) #Nephelometric dataset
+
+#Create Bland-Altman plots
+#Bland-Altman plot for Gravimetric
+baplot_grav <- ggplot(ecmgravs, aes(x = avg, y = diff)) + #Select the mean as the x-axis and the difference as the y-axis
+  geom_point(shape=23, fill= "steelblue", color="black", size=2.5) + #Adding points selecting shape, color and size
+  geom_hline(yintercept = mean_diff_grav) + #Adding the mean difference line
+  geom_hline(yintercept = lower_grav, color = "navyblue", linetype="twodash") + #Adding the lower limit line
+  geom_hline(yintercept = upper_grav, color = "navyblue", linetype="twodash") + #Adding the upper limit line
+  theme_bw(base_size = 17) +
+  geom_text(x= 550, y=-10, size= 3.5, label= "Mean difference= 5.70 µg/m3")+ #add Mean difference text manually
+  xlab(expression(PM[2.5]~concentration~difference~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(Average~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  xlim(NA, 700)+ #Set the x-axis limits
+  ylim(-280, 280) #Set the y-axis limits
+
+#Bland-Altman plot for Nephelometric
+baplot_neph <- ggplot(ecmnephs, aes(x = avg, y = diff)) + #Select the mean as the x-axis and the difference as the y-axis
+  geom_point(shape=23, fill= "steelblue", color="black", size=2.5) +
+  geom_hline(yintercept = mean_diff_neph) +
+  geom_hline(yintercept = lower_neph, color = "navyblue", linetype="twodash") +
+  geom_hline(yintercept = upper_neph, color = "navyblue", linetype="twodash") +
+  theme_bw(base_size = 17) +
+  geom_text(x= 550, y=-15, size= 3.5, label= "Mean difference= 4.33 µg/m3")+
+  xlab(expression(PM[2.5]~concentration~difference~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(Average~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  xlim(NA, 700)+
+  ylim(-280, 280)
+
+#Combine plots in one Graph (This is for Figure 7)
+baplot_sampletype <- ggarrange(baplot_grav + rremove("ylab") + rremove("xlab"), #remove x and y-axis label for Grav plot
+                               baplot_neph + rremove("ylab") + rremove("xlab"), #remove x and y-axis label for Neph plot
+                               nrow = 1, ncol = 2, #one row and two columns
+                               labels = "AUTO", #automatically label plots as "A" and "B"
+                               hjust = 0.1, #adjust horizontal position of labels
+                               vjust = 1.1) #adjust vertical position of labels
+
+#Add shared x and y-axis
+annotate_figure(baplot_sampletype, left = text_grob("Average PM2.5 Concentration (µg/m3)", rot = 90, vjust = 1), #Y-axis
+                bottom = text_grob("PM2.5 Concentration Difference (µg/m3)")) #X-axis
+
+#Bland-Altman Agreement by study arm####
+#Create new column for concentration Row averages
+ecmgravs_control$avg <- rowMeans(ecmgravs_control[,4:5])
+ecmgravs_intervention$avg <- rowMeans(ecmgravs_intervention[,4:5])
+ecmnephs_control$avg <- rowMeans(ecmnephs_control[,4:5])
+ecmnephs_intervention$avg <- rowMeans(ecmnephs_intervention[,4:5])
+
+#Create new column for difference in measurements
+ecmgravs_control$diff <- ecmgravs_control$ecm1_conc - ecmgravs_control$ecm2_conc
+ecmgravs_intervention$diff <- ecmgravs_intervention$ecm1_conc - ecmgravs_intervention$ecm2_conc
+ecmnephs_control$diff <- ecmnephs_control$ecm1_conc - ecmnephs_control$ecm2_conc
+ecmnephs_intervention$diff <- ecmnephs_intervention$ecm1_conc - ecmnephs_intervention$ecm2_conc
+
+#find average difference
+mean_diff_grav_control <- mean(ecmgravs_control$diff)
+mean_diff_grav_intervention <- mean(ecmgravs_intervention$diff)
+mean_diff_neph_control <- mean(ecmnephs_control$diff)
+mean_diff_neph_intervention <- mean(ecmnephs_intervention$diff)
+
+#find lower 95% confidence interval limits
+lower_grav_control <- mean_diff_grav_control - 1.96 * sd(ecmgravs_control$diff)
+lower_grav_intervention <- mean_diff_grav_intervention - 1.96 * sd(ecmgravs_intervention$diff)
+lower_neph_control <- mean_diff_neph_control - 1.96 * sd(ecmnephs_control$diff)
+lower_neph_intervention <- mean_diff_neph_intervention - 1.96 * sd(ecmnephs_intervention$diff)
+
+#find upper 95% confidence interval limits
+upper_grav_control <- mean_diff_grav_control + 1.96 * sd(ecmgravs_control$diff)
+upper_grav_intervention <- mean_diff_grav_intervention + 1.96 * sd(ecmgravs_intervention$diff)
+upper_neph_control <- mean_diff_neph_control + 1.96 * sd(ecmnephs_control$diff)
+upper_neph_intervention <- mean_diff_neph_intervention + 1.96 * sd(ecmnephs_intervention$diff)
+
+
+#Create Bland-Altman plots
+#Bland-Altman plot for Control-Gravimetric
+baplot_control_grav <- ggplot(ecmgravs_control, aes(x = avg, y = diff)) + #Select the mean as the x-axis and the difference as the y-axis
+  geom_point(shape=23, fill= "steelblue", color="black", size=2.5) + #Adding points selecting shape, color and size
+  geom_hline(yintercept = mean_diff_grav_control) + #Adding the mean difference line
+  geom_hline(yintercept = lower_grav_control, color = "navyblue", linetype="twodash") + #Adding the lower limit line
+  geom_hline(yintercept = upper_grav_control, color = "navyblue", linetype="twodash") + #Adding the upper limit line
+  theme_bw(base_size = 18) +
+  geom_text(x= 450, y= -200, size= 6 , label= "Mean difference= 8.82 µg/m3")+ #add Mean difference text manually (CHANGE `SIZE` ACCORDING FOR POSTER PRESENTATION)
+  xlab(expression(PM[2.5]~concentration~difference~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(Average~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  xlim(NA, 700)+ #Set the x-axis limits
+  ylim(-280, 280) #Set the y-axis limits
+
+#Bland-Altman plot for Control-Nephelometric
+baplot_control_neph <- ggplot(ecmnephs_control, aes(x = avg, y = diff)) + #Select the mean as the x-axis and the difference as the y-axis
+  geom_point(shape=23, fill= "steelblue", color="black", size=2.5) +
+  geom_hline(yintercept = mean_diff_neph_control) +
+  geom_hline(yintercept = lower_neph_control, color = "navyblue", linetype="twodash") +
+  geom_hline(yintercept = upper_neph_control, color = "navyblue", linetype="twodash") +
+  theme_bw(base_size = 18) +
+  geom_text(x= 450, y= -200, size= 6, label= "Mean difference= 6.48 µg/m3")+ #CHANGE `SIZE` ACCORDING FOR POSTER PRESENTATION
+  xlab(expression(PM[2.5]~concentration~difference~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(Average~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  xlim(NA, 700)+
+  ylim(-280, 280)
+
+#Bland-Altman plot for Intervention-Gravimetric
+baplot_intervention_grav <- ggplot(ecmgravs_intervention, aes(x = avg, y = diff)) + #Select the mean as the x-axis and the difference as the y-axis
+  geom_point(shape=23, fill= "steelblue", color="black", size=2.5) + #Adding points selecting shape, color and size
+  geom_hline(yintercept = mean_diff_grav_intervention) + #Adding the mean difference line
+  geom_hline(yintercept = lower_grav_intervention, color = "navyblue", linetype="twodash") + #Adding the lower limit line
+  geom_hline(yintercept = upper_grav_intervention, color = "navyblue", linetype="twodash") + #Adding the upper limit line
+  theme_bw(base_size = 17) +
+  geom_text(x= 250, y= -100, size= 6, label= "Mean difference= 0.68 µg/m3")+ #add Mean difference text manually (Modify position) (CHANGE `SIZE` ACCORDINGLY FOR POSTER)
+  xlab(expression(PM[2.5]~concentration~difference~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(Average~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  #xlim(NA, 110)+ #Set the x-axis limits
+  #ylim(-60, 60) #Set the y-axis limits
+  #xlim(NA, 700)+
+  #ylim(-280, 280)
+  xlim(NA, 350)+
+  ylim(-140, 140)
+
+#Bland-Altman plot for Intervention-Nephelometric
+baplot_intervention_neph <- ggplot(ecmnephs_intervention, aes(x = avg, y = diff)) + #Select the mean as the x-axis and the difference as the y-axis
+  geom_point(shape=23, fill= "steelblue", color="black", size=2.5) +
+  geom_hline(yintercept = mean_diff_neph_intervention) +
+  geom_hline(yintercept = lower_neph_intervention, color = "navyblue", linetype="twodash") +
+  geom_hline(yintercept = upper_neph_intervention, color = "navyblue", linetype="twodash") +
+  theme_bw(base_size = 17) +
+  geom_text(x= 250, y= -100, size= 6, label= "Mean difference= 0.76 µg/m3")+ #Modify position as needed (CHANGE `SIZE` ACCORDINGLY FOR POSTER)
+  xlab(expression(PM[2.5]~concentration~difference~(ug/m^3)))+ #Label the x-axis
+  ylab(expression(Average~PM[2.5]~concentration~(ug/m^3)))+ #Label the y-axis
+  #xlim(NA, 110)+
+  #ylim(-60, 60)
+  #xlim(NA, 700)+
+  #ylim(-280, 280)
+  xlim(NA, 350)+
+  ylim(-140, 140)
+
+#Arrange all four plots together (Better visualization, but consider changing the axis and position of text)
+baplot_all <- ggarrange(baplot_control_grav + rremove("ylab") + rremove("xlab"), #remove x and y-axis label for Grav plot
+                        baplot_control_neph + rremove("ylab") + rremove("xlab"), #remove x and y-axis label for Neph plot
+                        baplot_intervention_grav + rremove("ylab") + rremove("xlab"), #remove x and y-axis label for Grav plot
+                        baplot_intervention_neph + rremove("ylab") + rremove("xlab"), #remove x and y-axis label for Neph plot
+                        nrow = 2, ncol = 2, #one row and two columns
+                        labels = "AUTO", #automatically label plots from "A" to "D"
+                        hjust = -5, #adjust horizontal position of labels
+                        vjust = 2) #adjust vertical position of labels
+
+#Last step, this is for Figure 8.
+annotate_figure(baplot_all, left = text_grob("Average PM2.5 Concentration (µg/m3)", rot = 90, vjust = 1), #Y-axis
+                bottom = text_grob("PM2.5 Concentration Difference (µg/m3)")) #X-axis
+
+####Intra Class Correlations (ICC)####
+#ICC analysis by grav and neph samples
+#Log transform concentrations, creating new columns
+ecmdups$log_ecm1 <- log(ecmdups$ecm1_conc)
+ecmdups$log_ecm2 <- log(ecmdups$ecm2_conc)
+
+#Create a new data frame for ECM grav. comparisons
+grav_icc <- data.frame(A = c(ecmdups[1:220, 11]),
+                       B = c(ecmdups[1:220, 12]))
+
+#Create a new data frame for ECM neph. comparisons
+neph_icc <- data.frame(A = c(ecmdups[221:441, 11]),
+                       B = c(ecmdups[221:441, 12]))
+
+#Perform the ICC oneway model (To manually input for Table 1)
+icc(grav_icc, model = "oneway",
+    type = "agreement", unit = "single") #Gravimetric measurements
+
+icc(neph_icc, model = "oneway",
+    type = "agreement", unit = "single") #Nephelometric measurements
+
+#Intra Class Correlations by study arm####
+#Log transform concentrations
+#Gravimetric Control and Intervention
+ecmgravs_control$log_ecm1 <- log(ecmgravs_control$ecm1_conc)
+ecmgravs_control$log_ecm2 <- log(ecmgravs_control$ecm2_conc)
+ecmgravs_intervention$log_ecm1 <- log(ecmgravs_intervention$ecm1_conc)
+ecmgravs_intervention$log_ecm2 <- log(ecmgravs_intervention$ecm2_conc)
+
+#Nephelometric Control and Intervention
+ecmnephs_control$log_ecm1 <- log(ecmnephs_control$ecm1_conc)
+ecmnephs_control$log_ecm2 <- log(ecmnephs_control$ecm2_conc)
+ecmnephs_intervention$log_ecm1 <- log(ecmnephs_intervention$ecm1_conc)
+ecmnephs_intervention$log_ecm2 <- log(ecmnephs_intervention$ecm2_conc)
+
+#Create a new data frame for ECM gravimetric comparisons by study arm
+grav_control_icc <- data.frame(A = c(ecmgravs_control$log_ecm1),
+                            B = c(ecmgravs_control$log_ecm2))
+
+grav_intervention_icc <- data.frame(A = c(ecmgravs_intervention$log_ecm1),
+                           B = c(ecmgravs_intervention$log_ecm2))
+
+#Create a new data frame for ECM nephelometric comparisons by study arm
+neph_control_icc <- data.frame(A = c(ecmnephs_control$log_ecm1),
+                            B = c(ecmnephs_control$log_ecm2))
+
+neph_intervention_icc <- data.frame(A = c(ecmnephs_intervention$log_ecm1),
+                           B = c(ecmnephs_intervention$log_ecm2))
+
+#Perform the ICC oneway model, gravimetric comparisons by study arm
+icc(grav_control_icc, model = "oneway",
+    type = "agreement", unit = "single") #Control
+
+icc(grav_intervention_icc, model = "oneway",
+    type = "agreement", unit = "single") #Intervention
+
+#Perform the ICC oneway model, nephelometric comparisons by study arm
+icc(neph_control_icc, model = "oneway",
+    type = "agreement", unit = "single") #Control
+
+icc(neph_intervention_icc, model = "oneway",
+    type = "agreement", unit = "single") #Intervention
+
+####RMSE Analysis####
+#To manually input in Table 1
+rmse(ecmgravs$ecm1_conc, ecmgravs$ecm2_conc) #Gravimetric
+rmse(ecmnephs$ecm1_conc, ecmnephs$ecm2_conc) #Nephelometric
+rmse(ecmgravs_control$ecm1_conc, ecmgravs_control$ecm2_conc) #Gravimetric-Control
+rmse(ecmgravs_intervention$ecm1_conc, ecmgravs_intervention$ecm2_conc) #Gravimetric-Intervention
+rmse(ecmnephs_control$ecm1_conc, ecmnephs_control$ecm2_conc) #Nephelometric-Control
+rmse(ecmnephs_intervention$ecm1_conc, ecmnephs_intervention$ecm2_conc) #Nephelometric-Intervention
